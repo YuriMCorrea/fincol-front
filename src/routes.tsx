@@ -53,6 +53,14 @@ export const router = createBrowserRouter([
                 ],
             },
             {
+                path: "sign-in",
+                // Single route in lazy file
+                lazy: async () => {
+                    let { SignIn } = await import("./pages/auth/sign-in.tsx");
+                    return {Component: SignIn};
+                }
+            },
+            {
                 path: "*",
                 element: <ErrorPage />,
             },
