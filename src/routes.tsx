@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
                 }
             },
             {
-                path: "dashboard",
+                path: "mural",
                 async lazy() {
                     // Multiple routes in lazy file
                     let { DashboardLayout } = await import("./pages/app/dashboard");
@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
                 ],
             },
             {
-                path: "sign-in",
+                path: "login",
                 // Single route in lazy file
                 lazy: async () => {
                     let { SignIn } = await import("./pages/auth/sign-in.tsx");

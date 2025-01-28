@@ -41,15 +41,29 @@ export default function Layout() {
             </div>
 
             <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
+                <ul className="flex">
+                    <li className="flex-1 mr-2">
+                        <Link className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white"
+                              to="/">Home</Link>
                     </li>
-                    <li>
-                        <Link to="/about">About</Link>
+                    <li className="flex-1 mr-2">
+                        <Link className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
+                              to="/about">Sobre Nós</Link>
                     </li>
-                    <li>
-                        <Link to="/dashboard/messages">Messages (Dashboard)</Link>
+                    <li className="flex-1 mr-2">
+                        <Link className="text-center block text-gray-400 cursor-not-allowed py-2 px-4" to="/busca">Busca</Link>
+                    </li>
+                    <li className="flex-1 mr-2">
+                        <Link className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
+                            to="/mural">Mural</Link>
+                    </li>
+                    <li className="flex-1 mr-2">
+                        <Link className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
+                            to="/faq">FAQ</Link>
+                    </li>
+                    <li className="flex-1 mr-2">
+                        <Link className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
+                            to="/login">Login</Link>
                     </li>
                 </ul>
             </nav>
