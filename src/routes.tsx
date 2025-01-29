@@ -1,7 +1,7 @@
 import {
     createBrowserRouter,
 } from "react-router-dom";
-import Layout from "./pages/layout";
+import Base from "@/pages/_layouts/base.tsx";
 import { Home } from "./pages/app/home";
 import { ErrorPage } from "./pages/app/error-page.tsx";
 
@@ -9,7 +9,7 @@ import { ErrorPage } from "./pages/app/error-page.tsx";
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <Layout />,
+        element: <Base />,
         children: [
             {
                 index: true,
@@ -53,17 +53,26 @@ export const router = createBrowserRouter([
                 ],
             },
             {
-                path: "login",
-                // Single route in lazy file
-                lazy: async () => {
-                    let { SignIn } = await import("./pages/auth/sign-in.tsx");
-                    return {Component: SignIn};
-                }
-            },
-            {
                 path: "*",
                 element: <ErrorPage />,
             },
         ],
     },
+    {
+        path: "login",
+        // Single route in lazy file
+        lazy: async () => {
+            let { AuthLayout } = await import("./pages/_layouts/auth.tsx");
+            return {Component: AuthLayout};
+        },
+        children: [
+            {
+                path: "login",
+                lazy : async () => {
+                    let { SignIn } = await import("./pages/auth/sign-in.tsx");
+                    return {Component: SignIn};
+                }
+            }
+        ],
+    }
 ]);
