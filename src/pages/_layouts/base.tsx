@@ -16,41 +16,42 @@ import {
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
+import { toast } from "sonner"
+// import {Simulate} from "react-dom/test-utils";
+import {Toaster} from "@/components/ui/sonner.tsx";
+import {Button} from "@/components/ui/button.tsx";
 
 export default function Base() {
+    let logged = false;
     let navigation = useNavigation();
     let activeLinks = "text-center block border border-white rounded active:bg-blue-500 hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4";
 
+    function changeLogingStatus() {
+        logged = !logged;
+        console.log(logged);
+    }
+
     return (
-        <div>
-            <h1>Lazy Loading Example using RouterProvider</h1>
+        <div className="col-start-3 row-start-3 h-dvh flex flex-col bg-gray-100 p-2 dark:bg-white/10">
+            <div className="h-dvh rounded-xl bg-white p-10 text-sm/7 text-gray-700 dark:bg-gray-950 dark:text-gray-300">
 
-            <p>
-                This example demonstrates how to lazily load route definitions using{" "}
-                <code>route.lazy()</code>. To get the full effect of this demo, be sure
-                to open your Network tab and watch the new bundles load dynamically as
-                you navigate around.
-            </p>
-
-            <p>
-                The "About" and "Dashboard" pages are not loaded until you click on the
-                link. When you do, the code is loaded via a dynamic{" "}
-                <code>import()</code> statement during the <code>loading</code> phase of
-                the navigation. Once the code loads, the route loader executes, and then
-                the element renders with the loader-provided data.
-            </p>
-
-            <p>
-                This works for all data-loading/rendering related properties of a route,
-                including <code>action</code>, <code>loader</code>, <code>element</code>
-                , <code>errorElement</code>, and <code>shouldRevalidate</code>. You
-                cannot return path-matching properties from <code>lazy()</code> such as{" "}
-                <code>path</code>, <code>index</code>, <code>children</code>, and{" "}
-                <code>caseSensitive</code>.
-            </p>
-
+            <div className="relative flow-root my-2">
+                <h1 className="float-left text-2xl md:text-3xl pl-2 border-l-4  font-sans font-bold border-teal-400  dark:text-gray-200">
+                    <Link to="/">FIN COL</Link>
+                </h1>
+                <div className="float-right">
+                    <Avatar className="float-right">
+                        <AvatarImage src="https://github.com/shadcn.png" />
+                        <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                    <Button className="mx-2 float-right" onClick={() => changeLogingStatus()}> {logged ? "Sign-out" : "Sign-in"}</Button>
+                </div>
+            </div>
             <div style={{position: "fixed", top: 0, right: 0}}>
-                {navigation.state !== "idle" && <p>Navigation in progress...</p>}
+                <Toaster duration={500}/>
+                {navigation.state !== "idle" ? toast("Navigation in progress...") : null}
             </div>
 
             {/*<nav>*/}
@@ -98,10 +99,10 @@ export default function Base() {
                         </Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link to="/busca">
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        <Link to="#" className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm text-gray-400 font-medium transition-colors focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 cursor-not-allowed disabled-link">
+                            {/*<NavigationMenuLink className={navigationMenuTriggerStyle()}>*/}
                                 Busca
-                            </NavigationMenuLink>
+                            {/*</NavigationMenuLink>*/}
                         </Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
@@ -131,7 +132,8 @@ export default function Base() {
 
             <hr/>
 
-            <Outlet/>
+            <Outlet />
+            </div>
         </div>
     );
 }

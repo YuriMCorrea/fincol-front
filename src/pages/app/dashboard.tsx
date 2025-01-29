@@ -22,10 +22,10 @@ export function DashboardLayout() {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/dashboard">Dashboard Home</Link>
+                        <Link to="/mural">Mural Público</Link>
                     </li>
                     <li>
-                        <Link to="/dashboard/messages">Messages</Link>
+                        <Link to="/mural/apoiadores">Mural Apoiadores</Link>
                     </li>
                 </ul>
             </nav>

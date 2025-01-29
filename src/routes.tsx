@@ -34,23 +34,31 @@ export const router = createBrowserRouter([
                     {
                         index: true,
                         async lazy() {
-                            let { DashboardIndex } = await import("./pages/app/dashboard");
-                            return { Component: DashboardIndex };
+                            let { DashboardIndex, DashboardLayout } = await import("./pages/app/dashboard");
+                            return { Component: DashboardIndex, DashboardLayout };
                         },
                     },
                     {
                         path: "messages",
                         async lazy() {
-                            let { dashboardMessagesLoader, DashboardMessages } = await import(
+                            let { dashboardMessagesLoader, DashboardMessages, DashboardLayout } = await import(
                                 "./pages/app/dashboard.tsx"
                                 );
                             return {
                                 loader: dashboardMessagesLoader,
-                                Component: DashboardMessages,
+                                Component: DashboardMessages, DashboardLayout,
                             };
                         },
                     },
                 ],
+            },
+            {
+                path: "faq",
+                // Single route in lazy file
+                lazy: async () => {
+                    let {Faq} = await import("./pages/app/faq.tsx");
+                    return {Component: Faq};
+                }
             },
             {
                 path: "*",
