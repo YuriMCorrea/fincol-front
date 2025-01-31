@@ -1,7 +1,6 @@
 import {
     Outlet,
     Link,
-    useNavigation,
 } from "react-router-dom";
 
 import {
@@ -26,7 +25,6 @@ import {Button} from "@/components/ui/button.tsx";
 export default function Base() {
     let logged = false;
     // let navigation = useNavigation();
-    let activeLinks = "text-center block border border-white rounded active:bg-blue-500 hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4";
 
     function changeLogingStatus() {
         logged = !logged;
