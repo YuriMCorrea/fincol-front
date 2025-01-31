@@ -4,8 +4,6 @@ import {
 import Base from "@/pages/_layouts/base.tsx";
 import { Home } from "./pages/app/home";
 import { ErrorPage } from "./pages/app/error-page.tsx";
-import {DashboardPosts} from "@/pages/app/dashboard.tsx";
-
 
 export const router = createBrowserRouter([
     {
