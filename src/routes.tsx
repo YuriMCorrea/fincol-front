@@ -4,6 +4,7 @@ import {
 import Base from "@/pages/_layouts/base.tsx";
 import { Home } from "./pages/app/home";
 import { ErrorPage } from "./pages/app/error-page.tsx";
+import {DashboardPosts} from "@/pages/app/dashboard.tsx";
 
 
 export const router = createBrowserRouter([
@@ -39,14 +40,14 @@ export const router = createBrowserRouter([
                         },
                     },
                     {
-                        path: "messages",
+                        path: "apoiadores",
                         async lazy() {
-                            let { dashboardMessagesLoader, DashboardMessages, DashboardLayout } = await import(
+                            let { dashboardPostsLoader, DashboardPosts, DashboardLayout } = await import(
                                 "./pages/app/dashboard.tsx"
                                 );
                             return {
-                                loader: dashboardMessagesLoader,
-                                Component: DashboardMessages, DashboardLayout,
+                                loader: dashboardPostsLoader,
+                                Component: DashboardPosts, DashboardLayout,
                             };
                         },
                     },
