@@ -39,7 +39,8 @@ jobs:
         run: npm ci
       - name: Build
         run: |
-          npm run build 
+          npm run build
+          ls
           cp 'dist/*' 'build/'
       - name: Setup Pages
         uses: actions/configure-pages@v4
