@@ -41,7 +41,7 @@ jobs:
         run: |
           npm run build
           ls
-          cp 'dist/'* 'build/'
+          cp -r 'dist/'* 'build/'
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
