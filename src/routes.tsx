@@ -7,7 +7,7 @@ import { ErrorPage } from "./pages/app/error-page.tsx";
 
 export const router = createBrowserRouter([
     {
-        path: "/fincol-front",
+        path: "/",
         element: <Base />,
         children: [
             {
